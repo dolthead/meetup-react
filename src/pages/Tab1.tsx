@@ -1,5 +1,6 @@
 import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar, useIonModal } from '@ionic/react';
-import { helpCircle } from 'ionicons/icons';
+import { helpCircleOutline } from 'ionicons/icons';
+import Help from './Help';
 import './Tab1.css';
 
 const peopleList = [
@@ -8,19 +9,22 @@ const peopleList = [
   { key: 3, name: "Bob", email: "bob@simplybest.com"},
 ];
 
-// const openHelp = () => {
-//   const [present] = useIonModal(Help, {});
-//   present()
-// }
-
 const Tab1: React.FC = () => {
+
+  const handleDismiss = () => {
+    dismiss();
+  };
+  const [present, dismiss] = useIonModal(Help, {
+    onDismiss: handleDismiss
+  });
+
   return (
     <IonPage>
       <IonHeader>
-        <IonToolbar>
+        <IonToolbar color="primary">
           <IonButtons slot="end">
-            <IonButton>
-              <IonIcon slot="start" icon={helpCircle} />
+            <IonButton onClick={() => present()} size="large">
+              <IonIcon slot="start" icon={helpCircleOutline} />
             </IonButton>
           </IonButtons>
           <IonTitle>Tab 1</IonTitle>
@@ -35,7 +39,7 @@ const Tab1: React.FC = () => {
 
         <IonList>
             {peopleList.map(person => (
-            <IonItem>
+            <IonItem key={person.key.toString()}>
               <IonLabel>{person.name}</IonLabel>
               <p>{person.email}</p>
             </IonItem>

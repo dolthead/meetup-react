@@ -1,0 +1,7 @@
+ion-footer, ion-toolbar {
+    --background: transparent;
+    --border: none;
+}
+.sc-ion-buttons-md-s ion-icon[slot=start] {
+    font-size: 2em;
+}

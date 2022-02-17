@@ -1,31 +1,33 @@
-import { IonPage, IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle, IonContent, IonList, IonItem, IonLabel } from "@ionic/react";
-import { closeCircle } from "ionicons/icons";
+import './Help.css';
+import { IonPage, IonHeader, IonToolbar, IonButtons, IonButton, IonIcon, IonTitle, IonContent, IonList, IonItem, IonLabel, IonFooter } from "@ionic/react";
+import { closeCircleOutline } from "ionicons/icons";
 
-const close = () => {
-
-}
-
-const Help: React.FC = () => {
-    return (
+const Help: React.FC<{
+    onDismiss: () => void;
+  }> = ({ onDismiss }) => (
       <IonPage>
         <IonHeader>
           <IonToolbar>
             <IonButtons slot="end">
-              <IonButton onClick={close}>
-                <IonIcon slot="start" icon={closeCircle} />
+              <IonButton onClick={() => onDismiss()} size="large">
+                <IonIcon slot="start" icon={closeCircleOutline} />
               </IonButton>
             </IonButtons>
-            <IonTitle>Tab 1</IonTitle>
+            <IonTitle>Help</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent fullscreen>
+        <IonContent class="ion-padding">
   
             This is help content
          
         </IonContent>
+        <IonFooter>
+            <IonToolbar>
+                <IonButton expand="block" onClick={() => onDismiss()}>Close</IonButton>
+            </IonToolbar>
+        </IonFooter>
       </IonPage>
     );
-  };
   
   export default Help;
   
