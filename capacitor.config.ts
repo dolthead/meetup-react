@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'meetup-react',
+  appId: 'com.simplybest.meetup.react',
+  appName: 'App',
   webDir: 'build',
   bundledWebRuntime: false
 };
