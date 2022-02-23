@@ -4,6 +4,11 @@ import { useLocation } from "react-router-dom";
 const Detail: React.FC = () => {
 
   const location: any = useLocation();
+  if (location.state?.email) {
+    window.localStorage.setItem('detail-state', JSON.stringify(location.state));
+  } else {
+    location.state = JSON.parse(window.localStorage.getItem('detail-state') ?? '');
+  }
 
   return (
       <IonPage>
