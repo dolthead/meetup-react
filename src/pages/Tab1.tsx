@@ -2,6 +2,7 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabe
 import { helpCircleOutline } from 'ionicons/icons';
 import Help from './Help';
 import './Tab1.css';
+import { useHistory } from "react-router-dom";
 
 const peopleList = [
   { key: 1, name: "Todd", email: "todd@simplybest.com"},
@@ -17,6 +18,7 @@ const Tab1: React.FC = () => {
   const [present, dismiss] = useIonModal(Help, {
     onDismiss: handleDismiss
   });
+  const history = useHistory();
 
   return (
     <IonPage>
@@ -39,7 +41,10 @@ const Tab1: React.FC = () => {
 
         <IonList>
             {peopleList.map(person => (
-            <IonItem key={person.key.toString()}>
+            <IonItem key={person.key} button onClick={(e) => {
+              e.preventDefault();
+              history.push('/tab1/detail', person);
+            }}>
               <IonLabel>{person.name}</IonLabel>
               <p>{person.email}</p>
             </IonItem>
